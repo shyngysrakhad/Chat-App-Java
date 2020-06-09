@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Message {
     private int id;
+    private User author;
     private Date date;
     private String text;
     private Media media;
@@ -66,6 +67,14 @@ public class Message {
                 ", file=" + file +
                 ", date=" + date +
                 '}';
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
     public Date getDate() {

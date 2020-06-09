@@ -2,9 +2,8 @@ package com.company;
 
 import com.company.mediator.ChatMediator;
 
-import java.sql.SQLException;
 
-public class User implements IProfile{
+public abstract class User{
     private int id;
     private String name;
     protected ChatMediator mediator;
@@ -13,6 +12,8 @@ public class User implements IProfile{
         this.id = Random.generated();
         this.name = name;
     }
+    public abstract void sendMessage(Message message);
+    public abstract void receiveMessage(Message message);
 
     public int getId() {
         return id;
@@ -38,53 +39,4 @@ public class User implements IProfile{
         this.mediator = mediator;
     }
 
-    @Override
-    public void showFriends() {
-
-    }
-
-    @Override
-    public void updateUsername(String username) throws SQLException {
-
-    }
-
-    @Override
-    public void updatePassword(String password) throws SQLException {
-
-    }
-
-    @Override
-    public void updateFirstName(String firstName) throws SQLException {
-
-    }
-
-    @Override
-    public void updateLastName(String lastName) throws SQLException {
-
-    }
-
-    @Override
-    public void addFriend(User friend) throws SQLException {
-
-    }
-
-    @Override
-    public void deleteFriend(User friend) throws SQLException {
-
-    }
-
-    @Override
-    public boolean isExistUser(String username) throws SQLException {
-        return false;
-    }
-
-    @Override
-    public boolean isFriend(User friend) throws SQLException {
-        return false;
-    }
-
-    @Override
-    public void sendMessage(Message message, User user) {
-
-    }
 }

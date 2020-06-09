@@ -11,6 +11,7 @@ public class Member extends User implements IMember {
 
     @Override
     public void sendMessage(Message message) {
+        message.setAuthor(this);
         System.out.println(this.getName() + ": sending message = " + message.toString());
         try {
             mediator.sendMessage(message, this);
@@ -21,6 +22,7 @@ public class Member extends User implements IMember {
 
     @Override
     public void receiveMessage(Message message) {
+        message.setAuthor(this);
         System.out.println(this.getName() + ": received message = " + message.toString());
     }
 }
