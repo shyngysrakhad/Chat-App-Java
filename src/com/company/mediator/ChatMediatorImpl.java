@@ -1,21 +1,21 @@
 package com.company.mediator;
 
 import com.company.Message;
-import com.company.User;
+import com.company.user.Member;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChatMediatorImpl implements ChatMediator{
-    private List<User> users;
+    private List<Member> users;
 
     public ChatMediatorImpl(){
         this.users = new ArrayList<>();
     }
 
     @Override
-    public void sendMessage(Message message, User user) {
-        for (User u: this.users){
+    public void sendMessage(Message message, Member user) {
+        for (Member u: this.users){
             if (u != user){
                 u.receiveMessage(message);
             }
@@ -23,7 +23,7 @@ public class ChatMediatorImpl implements ChatMediator{
     }
 
     @Override
-    public void addUser(User user) {
+    public void addUser(Member user) {
         this.users.add(user);
     }
 }

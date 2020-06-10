@@ -1,7 +1,7 @@
 package com.company.mediator;
 
 import com.company.Message;
-import com.company.User;
+import com.company.user.User;
 
 public interface Mediator {
     void register(User user);

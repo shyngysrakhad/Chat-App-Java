@@ -1,9 +1,9 @@
 package com.company.mediator;
 
 import com.company.Message;
-import com.company.User;
+import com.company.user.Member;
 
 public interface ChatMediator {
-    void sendMessage(Message message, User user);
-    void addUser(User user);
+    void sendMessage(Message message, Member user);
+    void addUser(Member user);
 }

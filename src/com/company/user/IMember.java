@@ -1,4 +1,6 @@
-package com.company;
+package com.company.user;
+
+import com.company.Message;
 
 public interface IMember {
     void sendMessage(Message message);

@@ -1,4 +1,4 @@
-package com.company;
+package com.company.user;
 
 import java.sql.SQLException;
 
@@ -14,5 +14,4 @@ public interface IProfile {
     boolean isExistUser(String username) throws SQLException;
     boolean isFriend(User friend) throws SQLException;
 
-    void sendMessage(Message message, User user);
 }

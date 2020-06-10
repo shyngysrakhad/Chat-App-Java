@@ -1,5 +1,8 @@
 package com.company;
 
+import com.company.reader.File;
+import com.company.user.User;
+
 import java.util.Date;
 
 public class Message {

@@ -1,4 +1,4 @@
-package com.company;
+package com.company.reader;
 
 import com.company.reader.EncryptedReadDecorator;
 import com.company.reader.Reader;
