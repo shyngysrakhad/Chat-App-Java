@@ -15,7 +15,7 @@ public class IndividualChatDemo {
             Database.connect();
 
             //Sign in process
-            Member user3 = Member.getMember("rakhadkz", "");
+            Member user3 = Member.getMember("rakhadkz", "123");
             Member user4 = Member.getMember("arman", "123");
             System.out.println("----");
 
@@ -30,6 +30,9 @@ public class IndividualChatDemo {
 
             //method sendMessage();
             user3.sendMessage(new Message("Hi"));
+            user3.sendMessage(new Message("How are you, bro?"));
+
+            individualChat.getChatHistory();
 
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());

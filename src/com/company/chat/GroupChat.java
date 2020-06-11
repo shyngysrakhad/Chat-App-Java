@@ -11,10 +11,15 @@ public class GroupChat extends Chat {
 
     public GroupChat(ArrayList<Message> messages, ArrayList<Member> users){
         super(messages, users);
-        ChatMediator mediator = new ChatMediatorImpl();
+        ChatMediatorImpl mediator = new ChatMediatorImpl(this);
         for (Member user: users){
             user.setMediator(mediator);
             mediator.addUser(user);
+        }
+    }
+    public void getChatHistory(){
+        for (Message m: getMessages()) {
+            System.out.println(m.toString());
         }
     }
 }

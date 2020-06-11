@@ -21,6 +21,10 @@ public class Chat {
         this.members = members;
     }
 
+    public void addMessage(Message message){
+        this.messages.add(message);
+    }
+
     public int getId() {
         return id;
     }

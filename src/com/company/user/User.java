@@ -2,6 +2,7 @@ package com.company.user;
 
 import com.company.Database;
 import com.company.mediator.ChatMediator;
+import com.company.mediator.ChatMediatorImpl;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +22,7 @@ public class User implements IProfile {
     private ResultSet result;
     private String sql;
 
-    protected ChatMediator mediator;
+    protected ChatMediatorImpl mediator;
 
     public User(){
         this.id = 0;

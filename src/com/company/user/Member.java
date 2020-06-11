@@ -1,15 +1,19 @@
 package com.company.user;
 
 import com.company.*;
+import com.company.chat.Chat;
+import com.company.chat.SecretChat;
 import com.company.mediator.ChatMediator;
+import com.company.mediator.ChatMediatorImpl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Member extends User implements IMember {
-
     public static Member getMember(String username, String password) throws SQLException {
         if (isCorrect(username, password)){
             String sql1 = "select * from project.user where username = '" + username + "' and password = '" + password + "'";
@@ -47,11 +51,11 @@ public class Member extends User implements IMember {
         super(id, username, password, firstName, lastName, friends);
     }
 
-    public ChatMediator getMediator() {
+    public ChatMediatorImpl getMediator() {
         return mediator;
     }
 
-    public void setMediator(ChatMediator mediator) {
+    public void setMediator(ChatMediatorImpl mediator) {
         this.mediator = mediator;
     }
 
@@ -62,17 +66,25 @@ public class Member extends User implements IMember {
             return;
         }
         message.setAuthor(this);
-        System.out.println(this.getUsername() + ": sending message = " + message.toString());
+        System.out.println(this.getUsername() + ": sending " + message.toString());
         try {
             mediator.sendMessage(message, this);
         }catch (NullPointerException e){
             System.out.println("Mediator not found");
+        }catch (InterruptedException e){
+            System.out.println("Problem with timeout");
         }
     }
 
     @Override
-    public void receiveMessage(Message message) {
+    public void receiveMessage(Message message) throws InterruptedException {
         message.setAuthor(this);
-        System.out.println(this.getUsername() + ": received message = " + message.toString());
+        System.out.println(this.getUsername() + ": received " + message.toString());
+        if (mediator.getChat() instanceof SecretChat){
+            Message deleted = mediator.getChat().getMessages().get(0);
+            TimeUnit.SECONDS.sleep(mediator.getSeconds());
+            mediator.getChat().getMessages().remove(0);
+            System.out.println(deleted.toString() + " was successfully deleted at" + new Date());
+        }
     }
 }

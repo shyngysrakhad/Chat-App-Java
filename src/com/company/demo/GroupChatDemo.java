@@ -26,19 +26,19 @@ public class GroupChatDemo {
             list.add(user2);
             list.add(user3);
             Message message = new Message("HI");
-            Message message2 = new Message("HI");
 
             //Store all message of the group chat
             //TODO store from db
             ArrayList<Message> messages = new ArrayList<>();
             messages.add(message);
-            messages.add(message2);
 
             //To create GroupChat class
-            new GroupChat(messages,list);
+            GroupChat chat = new GroupChat(messages,list);
 
             //Notify a message to all members
             user1.sendMessage(new Message("Hello"));
+            user1.sendMessage(new Message("How are you, guys?"));
+            chat.getChatHistory();
 
 
         } catch (ClassNotFoundException | SQLException e) {
