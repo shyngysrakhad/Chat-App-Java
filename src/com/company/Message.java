@@ -13,6 +13,11 @@ public class Message {
     private Media media;
     private File file;
 
+    public Message(String text, Date date) {
+        this.text = text;
+        this.date = date;
+    }
+
     public Message(String text){
         this.id = Random.generated();
         this.date = new Date();

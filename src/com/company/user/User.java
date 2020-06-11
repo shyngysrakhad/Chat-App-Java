@@ -1,6 +1,9 @@
 package com.company.user;
 
 import com.company.Database;
+import com.company.emuns.Gender;
+import com.company.emuns.MaritalStatus;
+import com.company.emuns.Status;
 import com.company.mediator.ChatMediator;
 import com.company.mediator.ChatMediatorImpl;
 
@@ -24,6 +27,23 @@ public class User implements IProfile {
 
     protected ChatMediatorImpl mediator;
 
+    private String name;
+    private String surname;
+    private Gender gender;
+    private int age;
+    private MaritalStatus maritalStatus;
+    private Status status;
+
+    public User(String name, String surname, String username, Gender gender, int age, MaritalStatus maritalStatus, Status status) {
+        this.name = name;
+        this.surname = surname;
+        this.username = username;
+        this.gender = gender;
+        this.age = age;
+        this.maritalStatus = maritalStatus;
+        this.status = status;
+    }
+
     public User(){
         this.id = 0;
         this.username = "";
@@ -31,7 +51,11 @@ public class User implements IProfile {
         this.firstName = "";
         this.lastName = "";
         this.friends = null;
-        System.out.println("Username or password incorrect");
+        if (this instanceof ChannelAdmin){
+            System.out.println("Admin is ready");
+        }else{
+            System.out.println("Username or password incorrect");
+        }
     }
 
     public User(int id, String username, String password, String firstName, String lastName, ArrayList<String> friends){
@@ -67,6 +91,54 @@ public class User implements IProfile {
         }else{
             System.out.println(username + " is already taken");
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public MaritalStatus getMaritalStatus() {
+        return maritalStatus;
+    }
+
+    public void setMaritalStatus(MaritalStatus maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public String getPassword() {
